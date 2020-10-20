@@ -91,7 +91,7 @@ function handleMessage(sender_psid, received_message) {
   if (received_message.text) {    
 
     /*response = bot.answer(received_message.text)*/
-    response = {'salut !!'}
+    response = {'text': 'salut !!'}
 
     if (response) {
 
