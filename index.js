@@ -60,7 +60,7 @@ app.post('/webhook', (req, res) => {
 app.get('/webhook', (req, res) => {
 
   // Your verify token. Should be a random string.
-  let VERIFY_TOKEN = "EAAN9ToxXZA5MBAOwnkukVZCzLz1ZCbwUwxLFflCCXFqIskVkUeCGZAqXhZB3XZBXW64N7mtzlSqqlLISob5oHZAIZCiKmB623Vmb4CoFrGZBqfCIlOZCskb09loiqHW4uQZAWqMbDHAxUe6aza2yPjJSCtQtBocKZCimvMlt6cQdOFooYQZDZD"
+  let VERIFY_TOKEN = process.env.PAGE_ACCESS_TOKEN
     
   // Parse the query params
   let mode = req.query['hub.mode'];
@@ -97,8 +97,10 @@ function handleMessage(sender_psid, received_message) {
     }
   }  
   
-  // Sends the response message
-  callSendAPI(sender_psid, response);  
+  if (received_message.text == 'Coucou Botco'){
+	  // Sends the response message
+	  callSendAPI(sender_psid, response);  
+  }
 }
 
 // Handles messaging_postbacks events
