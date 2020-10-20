@@ -85,17 +85,18 @@ app.get('/webhook', (req, res) => {
 
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
+
   let response;
 
   // Check if the message contains text
   if (received_message.text) {    
 
     /*response = bot.answer(received_message.text)*/
-    response = {'text': 'salut !!'}
+    response = bot.answer(received_message.text)
 
     if (response) {
-
-    callSendAPI(sender_psid, response);  
+      response = {'text': response}
+      callSendAPI(sender_psid, response);  
     }
 
   }  
